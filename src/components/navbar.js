@@ -14,6 +14,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 
 const darkTheme = createTheme({
@@ -24,6 +25,15 @@ const darkTheme = createTheme({
 
 const drawerWidth = 240;
 const navItems = ['Home', 'Store', 'Teams', 'More Information'];
+const navLinks = ['/', '/shops', '/teams', '/info'];
+
+const navContent = {
+    'Home' : '/',
+    'Store' : '/shops',
+    'Teams' : '/teams',
+    'More Information' : '/info'
+};
+
 
 function DrawerAppBar(props) {
     const { window } = props;
@@ -42,7 +52,7 @@ function DrawerAppBar(props) {
             <List>
                 {navItems.map((item) => (
                     <ListItem key={item} disablePadding>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
+                        <ListItemButton sx={{ textAlign: 'center' }} >
                             <ListItemText primary={item} />
                         </ListItemButton>
                     </ListItem>
@@ -68,9 +78,13 @@ function DrawerAppBar(props) {
                     </IconButton>
                     <img src="./teamlogo.png" style={{height: 110, width: 110, marginRight: 10}}/>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                        {navItems.map((item) => (
+                        {navItems.map((item, i) => (
                             <Button key={item} sx={{ color: '#fff' }}>
-                                {item}
+                                <Link to={navLinks[i]} style={{textDecoration: 'none'}}>
+                                     <Typography color="white" >
+                                        {item}
+                                     </Typography>
+                                </Link>
                             </Button>
                         ))}
                     </Box>

@@ -11,7 +11,7 @@ function App() {
     <>
       <BrowserRouter>
         <div>
-          <Navbar/>
+          <Navbar style={{position: 'absolute'}}/>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/shops" element={<ShopPage />} />
